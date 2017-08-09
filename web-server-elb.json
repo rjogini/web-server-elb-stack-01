@@ -23,7 +23,7 @@
 		"KeyName": {
 			"Description": "The EC2 Key Pair to allow SSH access to the instances",
 			"Type": "AWS::EC2::KeyPair::KeyName",
-			"Default": "ec2-sanjana",
+			"Default": "ec2-s3-rakesh",
 			"ConstraintDescription": "must be the name of an existing EC2 KeyPair."
 		},
 
@@ -409,8 +409,6 @@
 					"Fn::Base64": {
 						"Fn::Join": ["", [
 							"#!/bin/bash -xe\n",
-
-
 							"# Install the files and packages from the metadata\n",
 							"/opt/aws/bin/cfn-init -v ",
 							"         --stack ", {
@@ -508,6 +506,6 @@
 		"URL" : {
       "Description" : "URL of the sample website",
       "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "LoadBalancer", "DNSName" ]}]]}
-    }
 	}
+}
 }
